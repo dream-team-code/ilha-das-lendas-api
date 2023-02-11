@@ -2,5 +2,8 @@
 {
     public class ParametersJogador : ParametersPalavraChave
     {
+        public List<Guid> RoleId { get; set; }
+
+        public bool DreamTeam { get; set; }
     }
 }

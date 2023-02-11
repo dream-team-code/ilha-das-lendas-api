@@ -4,6 +4,7 @@ using IlhadasLendasAPI.Domain.Enum;
 using IlhadasLendasAPI.Domain.Pagination;
 using IlhadasLendasAPI.Infrastructure.Data.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace IlhadasLendasAPI.Infrastructure.Data.Repositories
 {
@@ -25,12 +26,36 @@ namespace IlhadasLendasAPI.Infrastructure.Data.Repositories
             else if (parametersJogador.Status != 0)
                 jogador = jogador.Where(x => x.Status == parametersJogador.Status.ToString());
 
+            if (!string.IsNullOrEmpty(parametersJogador.PalavraChave))
+                jogador = jogador.Where(programa => EF.Functions.Like(programa.Nome, $"%{parametersJogador.PalavraChave}%"));
+
             if (parametersJogador.Id != null)
                 jogador = jogador.Where(x => parametersJogador.Id.Contains(x.Id));
 
-            jogador = jogador.OrderBy(x => x.CriadoEm);
+
+                jogador = jogador.OrderBy(x => x.Role).ThenByDescending(x => x.Pontuacao);
+
+            if (parametersJogador.DreamTeam)
+            {
+                jogador = from element in jogador
+                          group element by element.Role
+                            into groups
+                            select groups.OrderBy(p => p.Pontuacao).First();
+            }
 
             return await Task.FromResult(PagedList<Jogador>.ToPagedList(jogador, parametersJogador.NumeroPagina, parametersJogador.ResultadosExibidos));
+        }
+
+        public override Task<Jogador> PostAsync(Jogador obj)
+        {
+            obj.CarregaCategoriaJogador();
+            return base.PostAsync(obj);
+        }
+
+        public override Task<Jogador> PutAsync(Jogador obj)
+        {
+            obj.CarregaCategoriaJogador();
+            return base.PutAsync(obj);
         }
 
         public bool ValidarId(Guid id)
