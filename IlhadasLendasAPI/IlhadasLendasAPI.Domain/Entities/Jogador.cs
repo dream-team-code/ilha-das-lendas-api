@@ -27,5 +27,13 @@ namespace IlhadasLendasAPI.Domain.Entities
         public Nacionalidade Nacionalidade { get; private set; }
 
         public List<Time> Times { get; private set; }
+
+        public void PutInformations(Jogador jogador)
+        {
+            AlteraCaminhoRelativo(jogador.CaminhoRelativo);
+            AlteraCaminhoAbsoluto(jogador.CaminhoAbsoluto);
+            AlteraCaminhoFisico(jogador.CaminhoFisico);
+            AlteraHoraEnvio(jogador.HoraEnvio);
+        }
     }
 }

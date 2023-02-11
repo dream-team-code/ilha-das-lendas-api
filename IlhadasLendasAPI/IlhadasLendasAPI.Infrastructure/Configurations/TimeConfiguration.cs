@@ -19,11 +19,11 @@ namespace IlhadasLendasAPI.Infrastructure.Configurations
                     .HasMaxLength(300)
                     .HasColumnType("varchar(300)");
 
-            builder.Property(p => p.Media)
-                   .IsRequired()
-                   .HasMaxLength(10000)
-                   .HasColumnName("Media")
-                   .HasColumnType("int");
+            //builder.Property(p => p.Media)
+            //       .IsRequired()
+            //       .HasMaxLength(10000)
+            //       .HasColumnName("Media")
+            //       .HasColumnType("int");
         }
     }
 }

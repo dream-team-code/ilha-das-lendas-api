@@ -1,12 +1,16 @@
-﻿namespace IlhadasLendasAPI.API.Configurations
+﻿using IlhadasLendasAPI.Application.Mappers;
+
+namespace IlhadasLendasAPI.API.Configurations
 {
     public static class AutoMapperConfig
     {
         public static void AddAutoMapperConfiguration(this IServiceCollection services)
         {
-            //services.AddAutoMapper(
-            //   typeof(ProdutoMappingProfile)
-            //   );
+            services.AddAutoMapper(
+               typeof(TimeMappingProfile),
+               typeof(JogadorMappingProfile),
+               typeof(RoleMappingProfile),
+               typeof(NacionalidadeMappingProfile));
         }
     }
 }

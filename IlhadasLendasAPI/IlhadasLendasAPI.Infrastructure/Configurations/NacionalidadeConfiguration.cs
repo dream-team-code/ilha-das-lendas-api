@@ -9,7 +9,7 @@ namespace IlhadasLendasAPI.Infrastructure.Configurations
     {
         public override void Configure(EntityTypeBuilder<Nacionalidade> builder)
         {
-            tableName = "Nacionaldiades";
+            tableName = "Nacionalidades";
 
             base.Configure(builder);
 
