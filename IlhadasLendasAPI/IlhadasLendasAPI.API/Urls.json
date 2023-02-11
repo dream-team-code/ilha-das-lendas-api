@@ -1,0 +1,22 @@
+﻿{
+  "TimeDesenvolvimento": {
+    "IP": "C:\\Users\\henri\\OneDrive\\Imagens\\ImagensBanco",
+    "DNS": "https://fickert.cloud/Arquivos/Imagem",
+    "SPLIT": "Imagem/"
+  },
+  "TimeProducao": {
+    "IP": "h:\\root\\home\\henriquefickert-001\\www\\vitrinesite\\arquivos\\imagem\\produto",
+    "DNS": "https://fickert.cloud/Arquivos/Imagem/Produto",
+    "SPLIT": "Imagem/"
+  },
+  "JogadorDesenvolvimento": {
+    "IP": "C:\\Users\\henri\\OneDrive\\Imagens\\ImagensBanco",
+    "DNS": "https://fickert.cloud/Arquivos/Imagem",
+    "SPLIT": "Imagem/"
+  },
+  "JogadorProducao": {
+    "IP": "h:\\root\\home\\henriquefickert-001\\www\\vitrinesite\\arquivos\\imagem\\produto",
+    "DNS": "https://fickert.cloud/Arquivos/Imagem/Produto",
+    "SPLIT": "Imagem/"
+  }
+}
