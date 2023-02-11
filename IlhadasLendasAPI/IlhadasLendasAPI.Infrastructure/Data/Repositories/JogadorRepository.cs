@@ -5,6 +5,8 @@ using IlhadasLendasAPI.Domain.Pagination;
 using IlhadasLendasAPI.Infrastructure.Data.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Linq;
 
 namespace IlhadasLendasAPI.Infrastructure.Data.Repositories
 {
@@ -32,15 +34,21 @@ namespace IlhadasLendasAPI.Infrastructure.Data.Repositories
             if (parametersJogador.Id != null)
                 jogador = jogador.Where(x => parametersJogador.Id.Contains(x.Id));
 
-
                 jogador = jogador.OrderBy(x => x.Role).ThenByDescending(x => x.Pontuacao);
 
             if (parametersJogador.DreamTeam)
             {
-                jogador = from element in jogador
-                          group element by element.Role
-                            into groups
-                            select groups.OrderBy(p => p.Pontuacao).First();
+                List<Guid> Ids = new();
+                Guid RoleId = Guid.Empty;
+                foreach(Jogador jogador2 in jogador){
+                    if (RoleId != jogador2.RoleId)
+                    {
+                        Ids.Add(jogador2.Id);
+                        RoleId = jogador2.RoleId;
+                    }
+                }
+
+                jogador = jogador.Where(x => Ids.Contains(x.Id));
             }
 
             return await Task.FromResult(PagedList<Jogador>.ToPagedList(jogador, parametersJogador.NumeroPagina, parametersJogador.ResultadosExibidos));
