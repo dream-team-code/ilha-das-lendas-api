@@ -30,7 +30,7 @@ namespace IlhadasLendasAPI.Application.Dtos.Time
             int divisao = 0;
             foreach (ViewJogadorDto jogador in Jogadores)
             {
-                if (jogador.Role.Nome != "Coach")
+                if (jogador.Role.Nome != "Coach" && jogador.Status == Status.Ativo)
                 {
                     soma += jogador.Pontuacao;
                     divisao++;
