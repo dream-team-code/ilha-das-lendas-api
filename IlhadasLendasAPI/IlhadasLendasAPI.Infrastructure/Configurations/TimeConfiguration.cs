@@ -19,6 +19,25 @@ namespace IlhadasLendasAPI.Infrastructure.Configurations
                     .HasMaxLength(300)
                     .HasColumnType("varchar(300)");
 
+
+            builder.Property(p => p.Alias)
+                    .IsRequired()
+                    .HasColumnName("Alias")
+                    .HasMaxLength(300)
+                    .HasColumnType("varchar(300)");
+
+            builder.Property(p => p.Vitorias)
+                   .IsRequired()
+                   .HasMaxLength(10000)
+                   .HasColumnName("Vitorias")
+                   .HasColumnType("int");
+
+            builder.Property(p => p.Derrotas)
+                   .IsRequired()
+                   .HasMaxLength(10000)
+                   .HasColumnName("Derrotas")
+                   .HasColumnType("int");
+
             //builder.Property(p => p.Media)
             //       .IsRequired()
             //       .HasMaxLength(10000)

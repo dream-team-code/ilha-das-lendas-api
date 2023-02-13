@@ -6,6 +6,12 @@ namespace IlhadasLendasAPI.Domain.Entities
     {
         public string Nome { get; private set; }
 
+        public string Alias { get; private set; }
+
+        public int Vitorias { get; private set; }
+
+        public int Derrotas { get; private set; }
+
         //public int Media { get; private set; }
 
         public List<Jogador> Jogadores { get; private set; }

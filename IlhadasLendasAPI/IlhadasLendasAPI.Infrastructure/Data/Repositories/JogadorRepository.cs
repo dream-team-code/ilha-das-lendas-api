@@ -1,4 +1,5 @@
-﻿using IlhadasLendasAPI.Domain.Core.Interfaces.Repositories;
+﻿using IlhadasLendasAPI.Domain.Core;
+using IlhadasLendasAPI.Domain.Core.Interfaces.Repositories;
 using IlhadasLendasAPI.Domain.Entities;
 using IlhadasLendasAPI.Domain.Enum;
 using IlhadasLendasAPI.Domain.Pagination;
@@ -34,13 +35,21 @@ namespace IlhadasLendasAPI.Infrastructure.Data.Repositories
             if (parametersJogador.Id != null)
                 jogador = jogador.Where(x => parametersJogador.Id.Contains(x.Id));
 
-                jogador = jogador.OrderBy(x => x.Role).ThenByDescending(x => x.Pontuacao);
+            jogador = jogador.OrderBy(x => x.Role).ThenByDescending(x => x.Pontuacao);
+
+
+            //List<Interesse> interesses = await appDbContext.Interesses.Where(interesse => interesse.UsuarioId == user.GetUserId()).ToListAsync();
+
+            //List<Guid> groupByCategoriaId = jogador.GroupBy(interesse => interesse.RoleId)
+            //                                       .OrderByDescending((x) => x.Select(x=>x.Pontuacao))
+            //                                       .Select(x => x.Key).Take(1).ToList();
 
             if (parametersJogador.DreamTeam)
             {
                 List<Guid> Ids = new();
                 Guid RoleId = Guid.Empty;
-                foreach(Jogador jogador2 in jogador){
+                foreach (Jogador jogador2 in jogador)
+                {
                     if (RoleId != jogador2.RoleId)
                     {
                         Ids.Add(jogador2.Id);
