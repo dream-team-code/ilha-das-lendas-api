@@ -3,7 +3,6 @@ using System;
 using IlhadasLendasAPI.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -18,18 +17,16 @@ namespace IlhadasLendasAPI.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.13")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("IlhadasLendasAPI.Domain.Entities.Jogador", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime?>("AlteradoEm")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Bagre")
                         .HasMaxLength(10000)
@@ -63,10 +60,10 @@ namespace IlhadasLendasAPI.Infrastructure.Migrations
                         .HasColumnName("CategoriaJogador");
 
                     b.Property<DateTime>("CriadoEm")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("HoraEnvio")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("MVP")
                         .HasMaxLength(10000)
@@ -74,7 +71,7 @@ namespace IlhadasLendasAPI.Infrastructure.Migrations
                         .HasColumnName("MVP");
 
                     b.Property<Guid>("NacionalidadeId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Nick")
                         .IsRequired()
@@ -89,11 +86,7 @@ namespace IlhadasLendasAPI.Infrastructure.Migrations
                         .HasColumnName("Nome");
 
                     b.Property<Guid>("NomeArquivo")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(300)
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("NomeArquivo")
-                        .HasDefaultValueSql("NEWID()");
+                        .HasColumnType("char(36)");
 
                     b.Property<int>("Pontuacao")
                         .HasMaxLength(10000)
@@ -101,7 +94,7 @@ namespace IlhadasLendasAPI.Infrastructure.Migrations
                         .HasColumnName("Pontuacao");
 
                     b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -129,13 +122,13 @@ namespace IlhadasLendasAPI.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime?>("AlteradoEm")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("CriadoEm")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -160,13 +153,13 @@ namespace IlhadasLendasAPI.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime?>("AlteradoEm")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("CriadoEm")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -197,10 +190,16 @@ namespace IlhadasLendasAPI.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Alias")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("Alias");
 
                     b.Property<DateTime?>("AlteradoEm")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("CaminhoAbsoluto")
                         .IsRequired()
@@ -221,10 +220,15 @@ namespace IlhadasLendasAPI.Infrastructure.Migrations
                         .HasColumnName("CaminhoRelativo");
 
                     b.Property<DateTime>("CriadoEm")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("Derrotas")
+                        .HasMaxLength(10000)
+                        .HasColumnType("int")
+                        .HasColumnName("Derrotas");
 
                     b.Property<DateTime>("HoraEnvio")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -233,11 +237,7 @@ namespace IlhadasLendasAPI.Infrastructure.Migrations
                         .HasColumnName("Nome");
 
                     b.Property<Guid>("NomeArquivo")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(300)
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("NomeArquivo")
-                        .HasDefaultValueSql("NEWID()");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -247,6 +247,11 @@ namespace IlhadasLendasAPI.Infrastructure.Migrations
                         .HasDefaultValue("1")
                         .HasColumnName("Status");
 
+                    b.Property<int>("Vitorias")
+                        .HasMaxLength(10000)
+                        .HasColumnType("int")
+                        .HasColumnName("Vitorias");
+
                     b.HasKey("Id");
 
                     b.ToTable("Times", (string)null);
@@ -255,10 +260,10 @@ namespace IlhadasLendasAPI.Infrastructure.Migrations
             modelBuilder.Entity("JogadorTime", b =>
                 {
                     b.Property<Guid>("JogadoresId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<Guid>("TimesId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.HasKey("JogadoresId", "TimesId");
 

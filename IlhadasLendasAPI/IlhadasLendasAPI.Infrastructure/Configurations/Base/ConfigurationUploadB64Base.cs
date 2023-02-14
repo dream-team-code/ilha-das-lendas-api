@@ -21,10 +21,10 @@ namespace IlhadasLendasAPI.Infrastructure.Configurations.Base
                    .HasColumnType("varchar(50)")
                    .HasDefaultValue(1);
 
-            builder.Property(x => x.NomeArquivo)
-                   .HasColumnName("NomeArquivo")
-                   .HasMaxLength(300)
-                   .HasDefaultValueSql("NEWID()");
+            //builder.Property(x => x.NomeArquivo)
+            //       .HasColumnName("NomeArquivo")
+            //       .HasMaxLength(300)
+            //       .HasDefaultValueSql("NEWID()");
 
             builder.Property(p => p.CaminhoRelativo)
                   .HasMaxLength(300)
