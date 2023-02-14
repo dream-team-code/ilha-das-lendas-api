@@ -38,34 +38,22 @@ namespace IlhadasLendasAPI.Domain.Entities
 
         public void CarregaCategoriaJogador()
         {
-            Dictionary<string, int> regra = new()
+            Dictionary<int, string> regras = new()
                 {
-                    { "Academy", 50 },
-                    { "Bagre", 60 },
-                    { "Mediano", 70 },
-                    { "Bom", 80 },
-                    { "God", 90 },
+                    {  5, "Academy" },
+                    {  6, "Bagre" },
+                    {  7, "Mediano" },
+                    {  8, "Bom" },
+                    {  9, "God" },
+                    { 10, "God" }
             };
 
-            if (Pontuacao <= 50)
-            {
-                CategoriaJogador = "Academy";
-            }
-            else if (Pontuacao > 50 && Pontuacao <= 60)
-            {
-                CategoriaJogador = "Bagre";
-            }
-            else if (Pontuacao > 60 && Pontuacao <= 70)
-            {
-                CategoriaJogador = "Mediano";
-            }
-            else if (Pontuacao > 70 && Pontuacao <= 80)
-            {
-                CategoriaJogador = "Bom";
-            }else
-            {
-                CategoriaJogador = "God";
-            }
+            int Pontos = Pontuacao > 100 ? Pontuacao = 100 : Pontuacao < 50 ? Pontuacao = 50 : Pontuacao;
+
+            double value = Pontos * 0.1;
+            string stringValue = value.ToString() + ",0"; 
+            int finalValue = Convert.ToInt32(stringValue.Substring(0, stringValue.IndexOf(",")));
+            CategoriaJogador = regras[finalValue];
         }
     }
 }

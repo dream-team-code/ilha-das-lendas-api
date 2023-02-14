@@ -1,14 +1,14 @@
 ﻿using IlhadasLendasAPI.API.Controllers;
 using IlhadasLendasAPI.Application.Dtos.Base;
 using IlhadasLendasAPI.Application.Dtos.Pagination;
-using IlhadasLendasAPI.Domain.Core.Notifier;
+using IlhadasLendasAPI.Application.Dtos.Role;
+using IlhadasLendasAPI.Application.Interfaces;
 using IlhadasLendasAPI.Domain.Core;
+using IlhadasLendasAPI.Domain.Core.Notifier;
+using IlhadasLendasAPI.Domain.Entities;
 using IlhadasLendasAPI.Domain.Enum;
 using IlhadasLendasAPI.Domain.Pagination;
 using Microsoft.AspNetCore.Mvc;
-using IlhadasLendasAPI.Application.Interfaces;
-using IlhadasLendasAPI.Domain.Entities;
-using IlhadasLendasAPI.Application.Dtos.Role;
 
 namespace IlhadasLendasAPI.API.V1.Controllers
 {

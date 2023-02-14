@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using IlhadasLendasAPI.Application.Applications.Base;
 using IlhadasLendasAPI.Application.Dtos.Base;
-using IlhadasLendasAPI.Application.Dtos.Time;
 using IlhadasLendasAPI.Application.Dtos.Pagination;
+using IlhadasLendasAPI.Application.Dtos.Time;
 using IlhadasLendasAPI.Application.Interfaces;
 using IlhadasLendasAPI.Application.Utilities.Image;
 using IlhadasLendasAPI.Application.Utilities.Paths;

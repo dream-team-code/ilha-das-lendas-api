@@ -1,7 +1,5 @@
 ﻿using IlhadasLendasAPI.Application.Dtos.Jogador;
-using IlhadasLendasAPI.Domain.Entities;
 using IlhadasLendasAPI.Domain.Enum;
-using System.Collections.Generic;
 
 namespace IlhadasLendasAPI.Application.Dtos.Time
 {
@@ -37,7 +35,7 @@ namespace IlhadasLendasAPI.Application.Dtos.Time
                 }
             }
 
-            if (soma != 0 && divisao!= 0) { Media = soma / divisao; }
+            if (soma != 0 && divisao != 0) { Media = soma / divisao; }
             else { Media = 0; }
         }
     }

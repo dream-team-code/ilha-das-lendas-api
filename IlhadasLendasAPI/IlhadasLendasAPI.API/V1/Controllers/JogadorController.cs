@@ -139,7 +139,6 @@ namespace IlhadasLendasAPI.API.V1.Controllers
             }
             else
             {
-
                 ViewJogadorDto atualizado = await jogadorApplication.PutAsync(putJogadorDto, "", "", "", "", "");
 
                 if (atualizado is null)

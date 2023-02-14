@@ -1,13 +1,9 @@
-﻿using IlhadasLendasAPI.Domain.Core;
-using IlhadasLendasAPI.Domain.Core.Interfaces.Repositories;
+﻿using IlhadasLendasAPI.Domain.Core.Interfaces.Repositories;
 using IlhadasLendasAPI.Domain.Entities;
 using IlhadasLendasAPI.Domain.Enum;
 using IlhadasLendasAPI.Domain.Pagination;
 using IlhadasLendasAPI.Infrastructure.Data.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
 
 namespace IlhadasLendasAPI.Infrastructure.Data.Repositories
 {

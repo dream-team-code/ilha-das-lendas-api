@@ -1,12 +1,12 @@
 ﻿using IlhadasLendasAPI.API.Controllers;
 using IlhadasLendasAPI.Application.Dtos.Base;
-using IlhadasLendasAPI.Application.Dtos.Time;
 using IlhadasLendasAPI.Application.Dtos.Pagination;
+using IlhadasLendasAPI.Application.Dtos.Time;
 using IlhadasLendasAPI.Application.Interfaces;
 using IlhadasLendasAPI.Application.Utilities.Image;
 using IlhadasLendasAPI.Application.Utilities.Paths;
-using IlhadasLendasAPI.Domain.Core.Notifier;
 using IlhadasLendasAPI.Domain.Core;
+using IlhadasLendasAPI.Domain.Core.Notifier;
 using IlhadasLendasAPI.Domain.Entities;
 using IlhadasLendasAPI.Domain.Enum;
 using IlhadasLendasAPI.Domain.Pagination;
@@ -139,7 +139,6 @@ namespace IlhadasLendasAPI.API.V1.Controllers
             }
             else
             {
-
                 ViewTimeDto atualizado = await timeApplication.PutAsync(putTimeDto, "", "", "", "", "");
 
                 if (atualizado is null)

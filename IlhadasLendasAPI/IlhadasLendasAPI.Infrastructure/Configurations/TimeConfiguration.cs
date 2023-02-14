@@ -19,7 +19,6 @@ namespace IlhadasLendasAPI.Infrastructure.Configurations
                     .HasMaxLength(300)
                     .HasColumnType("varchar(300)");
 
-
             builder.Property(p => p.Alias)
                     .IsRequired()
                     .HasColumnName("Alias")

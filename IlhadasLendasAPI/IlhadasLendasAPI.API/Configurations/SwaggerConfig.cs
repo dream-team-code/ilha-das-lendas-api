@@ -39,7 +39,7 @@ namespace IlhadasLendasAPI.API.Configurations
                         Array.Empty<string>()
                     }
                 });
-               options.OperationFilter<IgnorePropertyFilter>();
+                options.OperationFilter<IgnorePropertyFilter>();
 
                 string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
