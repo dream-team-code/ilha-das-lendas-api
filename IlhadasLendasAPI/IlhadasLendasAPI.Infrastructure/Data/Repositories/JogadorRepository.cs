@@ -18,7 +18,7 @@ namespace IlhadasLendasAPI.Infrastructure.Data.Repositories
 
         public async Task<PagedList<Jogador>> GetPaginationAsync(ParametersJogador parametersJogador)
         {
-            IQueryable<Jogador> jogador = appDbContext.Jogadores.Include(x => x.Role).Include(x => x.Nacionalidade).AsNoTracking();
+            IQueryable<Jogador> jogador = appDbContext.Jogadores.Include(x => x.Role).Include(x => x.Nacionalidade).Include(x => x.Times).AsNoTracking();
 
             if (parametersJogador.Id == null && parametersJogador.Status == 0)
                 jogador = jogador.Where(x => x.Status != Status.Excluido.ToString());
@@ -30,6 +30,9 @@ namespace IlhadasLendasAPI.Infrastructure.Data.Repositories
 
             if (parametersJogador.Id != null)
                 jogador = jogador.Where(x => parametersJogador.Id.Contains(x.Id));
+
+            if (!string.IsNullOrEmpty(parametersJogador.TimeALias))
+                jogador = jogador.Where(x=>x.Times.Any(x=>x.Alias == parametersJogador.TimeALias));
 
             jogador = jogador.OrderBy(x => x.Role).ThenByDescending(x => x.Pontuacao);
 
